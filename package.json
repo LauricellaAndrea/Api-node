@@ -1,0 +1,27 @@
+{
+  "name": "api-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LauricellaAndrea/Api-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LauricellaAndrea/Api-node/issues"
+  },
+  "homepage": "https://github.com/LauricellaAndrea/Api-node#readme",
+  "dependencies": {
+    "@prisma/client": "^4.8.1",
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.8.1"
+  }
+}

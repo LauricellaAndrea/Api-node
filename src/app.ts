@@ -9,10 +9,10 @@ import {
 } from "./lib/validation"
 
 const app = express()
-
 const prisma = new PrismaClient()
-
 app.use(express.json())
+
+//get
 
 app.get("/planets", async (request, response) => {
     const planets = await prisma.planet.findMany()

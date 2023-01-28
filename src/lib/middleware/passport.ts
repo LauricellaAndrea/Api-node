@@ -21,3 +21,11 @@ const githubStrategy = new passportGithub2.Strategy(
         done(null, user)
     }
 );
+
+passport.use(githubStrategy);
+
+passport.serializeUser<Express.User>((user, done) => done(null, user));
+
+passport.deserializeUser<Express.User>((user, done)=> done(null, user));
+
+export { passport };

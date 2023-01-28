@@ -4,6 +4,7 @@ import {validationErrorMiddleware} from "./lib/validation"
 import planetsRouters from "./routes/planet"
 import { initSessionMiddleware } from "./lib/middleware/session"
 import {passport} from "./lib/middleware/passport"
+import authRoutes from "./routes/auth"
 
 const corsOption = {
     origin: "http://localhost:8080"
@@ -19,6 +20,6 @@ app.use(express.json())
 app.use(cors(corsOption))
 app.use(validationErrorMiddleware)
 app.use("/planets", planetsRouters)
-
+app.use("/auth", authRoutes)
 
 app.listen(3000, ()=> console.log("running on port",3000 ))

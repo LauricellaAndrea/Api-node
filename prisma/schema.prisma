@@ -17,5 +17,8 @@ model Planet {
     diameter             Int
     moons                Int
     CreatedAt            DateTime          @default(now())
+    CreatedBy            String?           @db.VarChar(255)
     updatedAt            DateTime          @updatedAt
+    updatedBy            String?           @db.VarChar(255)
+
 }

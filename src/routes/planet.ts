@@ -6,6 +6,8 @@ import {
     PlanetData
 } from "../lib/validation"
 
+import { checkAuthorization } from "../lib/middleware/passport"
+
 import { initMulterMiddleware } from "../lib/middleware/multer"
 
 const prisma = new PrismaClient()
@@ -33,7 +35,7 @@ router.get("/:id", async (request, response) => {
 
 // Post
 
-router.post("/", validate({body: planetSchema}),  async (request, response) => {
+router.post("/", checkAuthorization, validate({body: planetSchema}),  async (request, response) => {
     const planetData: PlanetData = request.body;
 
     const planet = await prisma.planet.create({
@@ -47,7 +49,7 @@ router.post("/", validate({body: planetSchema}),  async (request, response) => {
 
 // Put 
 
-router.put("/:id", async (request, response)=>{
+router.put("/:id", checkAuthorization, async (request, response)=>{
     const {id} = request.params
     const { name, diameter, moons} = request.body
     const planet = await prisma.planet.update({
@@ -65,7 +67,7 @@ router.put("/:id", async (request, response)=>{
 
 // Delete
 
-router.delete("/:id", async (request, response) => {
+router.delete("/:id", checkAuthorization, async (request, response) => {
     const {id} = request.params
     const planet = await prisma.planet.delete({
         where: {
@@ -78,6 +80,7 @@ router.delete("/:id", async (request, response) => {
 //Upload
 
 router.post("/:id/photo", 
+checkAuthorization,
 upload.single("photo"), 
 async (request, response) => {
     console.log("request.file", request.file)

@@ -1,9 +1,11 @@
 import express from "express"
 import cors from "cors"
+
 import {validationErrorMiddleware} from "./lib/validation"
-import planetsRouters from "./routes/planet"
 import { initSessionMiddleware } from "./lib/middleware/session"
 import {passport} from "./lib/middleware/passport"
+
+import planetsRouters from "./routes/planet"
 import authRoutes from "./routes/auth"
 
 const corsOption = {

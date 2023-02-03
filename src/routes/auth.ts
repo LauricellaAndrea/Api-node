@@ -26,6 +26,7 @@ router.get(
 
 router.get(
     "/github/callback",
+    // @ts-ignore
     passport.authenticate("guthub", {
         failureRedirect: "/auth/github/login",
         keepSessionInfo: true,
@@ -35,7 +36,10 @@ router.get(
            return response.status(500).end();
         }
 
-        response.redirect(request.session.redirectTo);
+        response.redirect(request.session.redirectTo); {
+            return response.status(500).end();
+        }
+        
     }
 );
 
